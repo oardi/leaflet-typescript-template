@@ -1,51 +1,55 @@
 const webpack = require('webpack');
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const basePlugins = [];
-const prodPlugins = [
-  // new webpack.optimize.UglifyJsPlugin({
-  //   compress: { warnings: false }
-  // }),
-  //new ContextReplacementPlugin(/highlight\.js[\\\/]lib[\\\/]languages/)
-  new webpack.ContextReplacementPlugin(
-    /highlight\.js\/lib\/languages$/,
-    new RegExp(`^./(${['javascript', 'python', 'bash'].join('|')})$`)
-  )
-];
+module.exports = (env, argv) => {
+	return {
+		context: path.resolve(__dirname, './src'),
 
-const plugins = basePlugins;
-// basePlugins
-//   .concat((process.env.NODE_ENV === 'production') ? prodPlugins : []);
+		entry: {
+			app: './app.ts'
+		},
 
-module.exports = {
-  context: path.resolve(__dirname, './src'),
-  entry: {
-    app: './app.ts',
-  },
+		output: {
+			filename: '[name].bundle.js',
+			path: path.resolve(__dirname, './dist')
+		},
 
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js',
-    publicPath: '/assets',
-  },
+		resolve: {
+			extensions: ['.ts', '.js']
+		},
 
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
-  },
+		devtool: 'source-map',
 
-  // Source maps support ('inline-source-map' also works) 
-  devtool: 'source-map',
+		module: {
+			rules: [
+				{ test: /\.tsx?$/, loader: 'ts-loader' },
+				{ test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+				{ test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/[name].[ext]' },
+				{
+					test: /\.(png|jpg|gif)$/,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+								name: '[name].[ext]',
+								outputPath: 'assets/img',
+								publicPath: 'assets/img'
+							}
+						}
+					]
+				}
+			]
+		},
 
-  // Add the loader for .ts files. 
-  module: {
-    rules: [
-      { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-      { test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, loader: 'url-loader' },
-      { test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/, loader: 'url-loader' }
-    ]
-  },
-  plugins: plugins
+		plugins: [
+			new HtmlWebpackPlugin({
+				template: "./index.html",
+				filename: "index.html",
+				chunksSortMode: "manual",
+				chunks: ['vendors', 'app'],
+			})
+		]
+
+	}
 };
