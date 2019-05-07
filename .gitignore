@@ -2,6 +2,7 @@
 .vscode
 node_modules
 npm-debug.log
+package-lock.json
 
 # OS generated files
 Thumbs.db
