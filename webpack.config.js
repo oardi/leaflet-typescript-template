@@ -1,18 +1,23 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
 	return {
 		context: path.resolve(__dirname, './src'),
 
-		entry: {
-			app: './app.ts'
-		},
+		entry: { app: './app.ts' },
 
 		output: {
-			filename: '[name].bundle.js',
-			path: path.resolve(__dirname, './dist')
+			filename: '[name].[fullhash].bundle.js',
+			path: path.resolve(__dirname, 'dist'),
+		},
+
+		devServer: {
+			open: true,
+			hot: true
 		},
 
 		resolve: {
@@ -24,10 +29,16 @@ module.exports = (env, argv) => {
 		module: {
 			rules: [
 				{ test: /\.tsx?$/, loader: 'ts-loader' },
-				{ test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-				{ test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/[name].[ext]' },
 				{
-					test: /\.(png|jpg|gif)$/,
+					test: /\.s[ac]ss$/i,
+					use: [
+						MiniCssExtractPlugin.loader,
+						"css-loader",
+						"sass-loader"
+					]
+				},
+				{
+					test: /\.(jpe?g|png|gif|svg)$/,
 					use: [
 						{
 							loader: 'file-loader',
@@ -38,18 +49,34 @@ module.exports = (env, argv) => {
 							}
 						}
 					]
-				}
+				},
 			]
 		},
 
 		plugins: [
+			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
 				template: "./index.html",
 				filename: "index.html",
 				chunksSortMode: "manual",
 				chunks: ['vendors', 'app'],
+				minify: false
+			}),
+			new MiniCssExtractPlugin({
+				filename: '[name].css',
+				chunkFilename: 'chunk-[id].css'
 			})
-		]
+		],
+
+		optimization: {
+			minimize: true,
+			minimizer: [new TerserPlugin()],
+			splitChunks: {
+				cacheGroups: {
+					commons: { test: /[\\/]node_modules[\\/]/, name: 'vendors', chunks: 'all' }
+				}
+			}
+		}
 
 	}
 };
