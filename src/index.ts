@@ -14,21 +14,19 @@ L.Icon.Default.mergeOptions({
 });
 
 window.onload = () => {
-	let map: L.Map = L.map('map').setView([51.505, -0.09], 13);
+	let map: L.Map = L.map('map', { attributionControl: false }).setView(
+		[50.364444, 7.605916],
+		15
+	);
 
-	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution:
-			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	}).addTo(map);
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
-		attribution:
-			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	}).addTo(map);
 
-	L.marker([51.5, -0.09])
+	L.marker([50.364444, 7.605916])
 		.addTo(map)
-		.bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+		.bindPopup('Example Pin of the "Deutsches Eck"')
 		.openPopup();
 };
