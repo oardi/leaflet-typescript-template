@@ -19,5 +19,10 @@
 		"useDefineForClassFields": true,
 		"types": ["node", "webpack-env"]
 	},
-	"include": ["src/**/*", "webpack.common.ts", "webpack.dev.ts", "webpack.prod.ts"]
+	"include": [
+		"src/**/*",
+		"webpack.common.ts",
+		"webpack.dev.ts",
+		"webpack.prod.ts"
+	]
 }
