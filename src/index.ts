@@ -14,10 +14,7 @@ L.Icon.Default.mergeOptions({
 });
 
 window.onload = () => {
-	let map: L.Map = L.map('map', { attributionControl: false }).setView(
-		[50.364444, 7.605916],
-		15
-	);
+	let map: L.Map = L.map('map', { attributionControl: false }).setView([50.364444, 7.605916], 15);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -25,8 +22,5 @@ window.onload = () => {
 		maxZoom: 19,
 	}).addTo(map);
 
-	L.marker([50.364444, 7.605916])
-		.addTo(map)
-		.bindPopup('Example Pin of the "Deutsches Eck"')
-		.openPopup();
+	L.marker([50.364444, 7.605916]).addTo(map).bindPopup('Example Pin of the "Deutsches Eck"').openPopup();
 };

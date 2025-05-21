@@ -1,28 +1,23 @@
 {
 	"compilerOptions": {
-		"allowJs": false,
+		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
-		"module": "commonjs", // for typescript webpack files
-		"moduleResolution": "Node",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"module": "esnext",
+		"moduleResolution": "node",
 		"noFallthroughCasesInSwitch": true,
 		"noEmit": false,
+		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"target": "ESNext",
-		"useDefineForClassFields": true,
-		"types": ["node", "webpack-env"]
+		"target": "esnext",
+		"types": ["node"]
 	},
-	"include": [
-		"src/**/*",
-		"webpack.common.ts",
-		"webpack.dev.ts",
-		"webpack.prod.ts"
-	]
+	"include": ["src"]
 }
