@@ -1,17 +1,22 @@
 # Leaflet Typescript Template
 
-This repo shows a basic Leaflet setup with Typescript and Vite.
+Simple setup of Leaflet using Typescript and Vite.
 
-### Requirements:
+### Install packages
 
--   NodeJs
--   Leaflet
--   Typescript
--   Vite
--   Scss
+```
+npm i
+```
 
-### Usage:
+### Start project
 
--   Clone the Repository
--   Install NodeJs Packages via `npm install`
--   run application via `npm start`
+```
+npm start
+```
+
+### Included
+
+-   Leaflet & Typescript Setup
+-   Vite as bundler
+-   declaration file to support importing leaflet PNGs
+-   Prettier
