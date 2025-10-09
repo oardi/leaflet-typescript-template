@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.2.0
+
+-   upgraded packages
+-   cleaned up structure
+-   updated readme.md
+
 ### 1.1.0
 
 -   deinstalled webpack and all dependencies

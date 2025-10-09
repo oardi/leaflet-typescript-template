@@ -1,6 +1,6 @@
 {
 	"name": "leaflet-typescript-template",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"author": "Ardian Shala",
 	"description": "Fast setup with Leaflet + Typescript + Vite",
 	"license": "MIT",
