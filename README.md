@@ -1,6 +1,6 @@
 # Leaflet Typescript Template
 
-Simple setup of Leaflet using Typescript and Vite.
+Fast and light setup to get you started with Leaflet v1.9 with Typescript and Vite.
 
 ### Install packages
 
