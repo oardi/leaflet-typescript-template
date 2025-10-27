@@ -16,7 +16,7 @@ npm start
 
 ### Included
 
--   Leaflet & Typescript Setup
--   Vite as bundler
--   declaration file to support importing leaflet PNGs
--   Prettier
+- Leaflet & Typescript Setup
+- Vite as bundler
+- declaration file to support importing leaflet PNGs
+- Prettier
