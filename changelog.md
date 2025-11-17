@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.4.0
+
+- updated packages
+
 ### 1.3.0
 
 - added prettier
