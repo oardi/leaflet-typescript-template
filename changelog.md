@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.5.0
+
+- updated packages
+
 ### 1.4.0
 
 - updated packages
