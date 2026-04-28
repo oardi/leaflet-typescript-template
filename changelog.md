@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.5.1
+
+- audit fix
+
 ### 1.5.0
 
 - updated packages
