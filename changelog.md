@@ -1,5 +1,9 @@
 # Changelog
 
+### [1.6.0] 2026-08-18
+
+- upgraded packages
+
 ### 1.5.1
 
 - audit fix
