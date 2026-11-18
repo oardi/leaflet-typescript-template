@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### [1.7.0] 2026-08-18
+
+- upgraded packages
+
 ### [1.6.0] 2026-08-18
 
 - upgraded packages

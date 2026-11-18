@@ -15,10 +15,10 @@
 	},
 	"devDependencies": {
 		"@types/leaflet": "1.9.22",
-		"@types/node": "26.2.0",
-		"prettier": "3.9.6",
-		"sass-embedded": "1.102.0",
+		"@types/node": "26.6.6",
+		"prettier": "3.10.1",
+		"sass-embedded": "1.108.2",
 		"typescript": "6.0.3",
-		"vite": "8.2.1"
+		"vite": "8.3.8"
 	}
 }
